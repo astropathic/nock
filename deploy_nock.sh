@@ -149,7 +149,7 @@ function generate_wallet() {
 function configure_mining_key() {
   read -p "[?] Enter your mining public key: " key
   if grep -q "MINING_PUBKEY" "$NCK_DIR/Makefile"; then
-    sed -i "s|^export MINING_PUBKEY :=.*|export MINING_PUBKEY := $key|" "$NCK_DIR/Makefile"
+    sed -i "s|^export MINING_PUBKEY ?=.*|export MINING_PUBKEY ?= $key|" "$NCK_DIR/Makefile"
   else
     echo "export MINING_PUBKEY := $key" >> "$NCK_DIR/Makefile"
   fi
